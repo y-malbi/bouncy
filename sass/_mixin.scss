@@ -1,0 +1,114 @@
+@mixin box-sizing{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+@mixin transform($transforms) {
+       -moz-transform: $transforms;
+         -o-transform: $transforms;
+        -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+          transform: $transforms;
+}
+
+@mixin box-shadow($top, $left, $blur, $spread, $color, $inset: false) {
+    @if $inset {
+        -webkit-box-shadow:inset $top $left $blur $spread $color;
+        -moz-box-shadow:inset $top $left $blur $spread $color;
+        box-shadow:inset $top $left $blur $spread $color;
+    } @else {
+        -webkit-box-shadow: $top $left $blur $spread $color;
+        -moz-box-shadow: $top $left $blur $spread $color;
+        box-shadow: $top $left $blur $spread $color;
+    }
+}
+
+/** Vertical gradiend like line **/
+@mixin gradient-vertical($start-color, $end-color, $start-percent, $end-percent) {
+    background-image: -webkit-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);
+    background-image: -o-linear-gradient(top, $start-color $start-percent, $end-color $end-percent);
+    background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0);
+}
+
+/** Add underline to hover effect **/
+@mixin link-hover-effect($color: $hover_color) {
+    position: relative;
+    color: $color;
+    text-decoration: none;
+
+    &:after {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: $color;
+        opacity: 0;
+        content: '';
+        @include transition(opacity 0.5s linear);
+    }
+
+    &:hover:after {
+        opacity: 1;
+    }
+}
+
+
+
+/** Media elements **/
+@mixin extra-small {
+    @media (max-width: 400px) {
+        @content;
+    }
+}
+
+@mixin small {
+    @media (max-width: 676px) {
+        @content;
+    }
+}
+
+@mixin middle {
+    @media (max-width: 991px ) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media (max-width: 1200px ) {
+        @content;
+    }
+}
+
+/** Madia for top menu **/
+@mixin middle_for_menu {
+    @media all and (min-width: 850px) and (max-width: 990px) {
+        @content;
+    }
+}
+
+@mixin small_for_menu {
+    @media all and (max-width: 849px) {
+        @content;
+    }
+}

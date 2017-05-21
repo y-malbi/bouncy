@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Sans+Pro:300');
+@import "normalize";
+@import "variables";
+@import "mixin";
+@import "slick";
+@import "grid";
+// если подключаем файл css, то указываем расширение "flaticon.css"
+
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?49x0f');
+  src:  url('../fonts/icomoon.eot?49x0f#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?49x0f') format('truetype'),
+    url('../fonts/icomoon.woff?49x0f') format('woff'),
+    url('../fonts/icomoon.svg?49x0f#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-angle-down:before {
+  content: "\f107";
+}
+.icon-facebook2:before {
+  content: "\ea90";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-vimeo:before {
+  content: "\eaa0";
+}
+.icon-linkedin2:before {
+  content: "\eaca";
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: $primary_color;
+    font-family: $primary_font;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+h3 {
+    margin: 0;
+    color: $headers_color;
+    font-family: $headers_font;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+button {
+    cursor: pointer;
+}
+.title{
+    text-transform: uppercase;
+    font-weight: 300;
+    font-family: $headers_font;
+    letter-spacing: 0.2em;
+}
+.section-text{
+    font-size: 14px;
+}
+
+
+/** Hello **/
+.hello{
+    background: #393f41 url(../img/hello-bg.jpg)no-repeat center center;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    .round-border{
+        position: absolute;
+        background: #19bd9a;
+        width: 36px;
+        height: 36px;
+        left: 50%;
+        bottom: 75px;
+        @include transform (translateX(-25%));
+        @include border-radius (50%);
+            .hello-next-link{
+            font-size: 36px;
+            line-height: 1;
+            color: rgba(255,255,255, 0.5);
+            text-decoration: none;
+            }
+            .hello-next-link:hover{
+                color: #d2ff00;
+            }
+    }
+}
+.header{
+    // position: fixed;
+    // z-index: 5;
+    width: 100%;
+    padding-top: 42px;
+    font-size: 0px;
+    line-height: 1.5;
+    margin-bottom: 193px;
+}
+.header-logo{
+    // margin-top: 20px;
+}
+.menu{
+    float: right;
+}
+.header-navigation{
+    padding: 0;
+    text-align: right;
+    font-size: 0;
+    
+    .header-navigation__elem{
+        display: inline-block;
+        font-size: 16px;
+        a{
+            color: $white;
+            text-decoration: none;
+            padding: 5px 15px;
+            border: 2px solid transparent;
+            @include border-radius(25px);
+            &:hover{
+                border-color: #fff;
+            }
+        }
+    }
+}
+a.active-section{
+    color: $white;
+    text-decoration: none;
+    padding: 5px 15px;
+    border: 2px solid #fff;
+    @include border-radius(25px);
+}
+
+.hello-content{
+    color: $white;
+    line-height: 2;
+    margin-bottom: 322px;
+    .hello-content-title{
+        font-size: 35px;
+        margin: 10px 0;
+    }
+    p{
+        margin: 0;
+    }
+}
+
+/* Portfolio*/
+
+.portfolio{
+    background: #f3f3f3;
+    padding: 84px 0;
+    .portfolio-title{
+        margin-bottom: 14px;
+    }
+}
+.button-group{
+    margin: 62px 0 70px 0; 
+    .button{
+        border: none;
+        background: transparent;
+        padding: 0 14px 9px 14px;
+        color: #464646;
+        position: relative;
+        border-bottom: 2px solid transparent;
+       
+        &:hover{
+            border-color: #19bd9a;
+            @include transition( border, 0.5s, ease);
+        }
+        &:focus, &:active{
+            outline: none;
+            border-bottom: 2px solid #19bd9a;
+        }
+    }
+}
+.grid{
+    width: 1110px;
+    margin: auto;
+}
+.grid-item{
+    margin-bottom: 10px;
+}
+.grid-item,
+.grid-item-size{
+    width: 270px;
+}
+
+
+/** slider **/
+.team{
+    padding-top: 50px;
+}
+.slide-content{
+    width: 80%;
+    margin:auto;
+}
+img.slide-img{
+    display: inline-block;
+}
+.slide-text{
+    display: inline-block;
+    width: 60%;
+    float: right;
+    text-align: right;
+}
+
+.slick-slide{
+    text-align: center;
+    background: #fff;
+}
+
+.slick-dots li.slick-active button:before{
+    color: #19bd9a;
+    opacity: 1;
+}
+.slick-dots li button:before{
+    color: #19bd9a;
+}
+.slick-dots{
+    margin-bottom: 50px;
+}
+
+#map{
+    min-height: 440px;
+}
+
+
+/** Social icons **/
+.social-icon{
+    a{
+        display: inline-block;
+    }
+}
+.one-social{
+    display: inline-block;
+    margin: 7px 0 5px 10px;
+    width: 33px;
+    height: 33px;
+    background: rgba(254, 254, 254, 0.8);
+    @include border-radius (50%);
+    color: #666262;
+    line-height: 33px;
+    text-align: center;
+    vertical-align: middle;
+    @include transition(background 0.6s ease);
+
+    &:hover{
+        background: #fff;
+    }
+}
+/** Services block **/
+
+
+/** Exampls of work **/
+
+/** Info block **/
+
+
+/** Footer **/
+
